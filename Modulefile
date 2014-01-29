@@ -1,0 +1,7 @@
+name 'rrdcached'
+version '0.0.1'
+source 'https://github.com/booo/puppet-rrdcached.git'
+author 'Patrick Ringl, Philipp Borgers'
+license 'GPL'
+summary 'puppet module for rrdcached'
+project_page 'https://github.com/booo/puppet-rrdcached'
