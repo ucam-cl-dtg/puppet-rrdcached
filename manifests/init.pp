@@ -16,7 +16,8 @@ class rrdcached (
   $jump_dir         = $rrdcached::params::jump_dir,
   $always_flush     = $rrdcached::params::always_flush,
   $enable_corefiles = $rrdcached::params::enable_corefiles,
-  $maxwait          = $rrdcached::params::maxwait
+  $maxwait          = $rrdcached::params::maxwait,
+  $restrict_writes  = $rrdcached::params::restrict_writes
 ) inherits rrdcached::params {
 
   class {'rrdcached::package':}
