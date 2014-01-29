@@ -20,12 +20,13 @@ class rrdcached (
   $restrict_writes  = $rrdcached::params::restrict_writes
 ) inherits rrdcached::params {
 
-  class {'rrdcached::package':}
-  class {'rrdcached::config':}
-  class {'rrdcached::service':}
+  class { 'rrdcached::package': }
+  class { 'rrdcached::config': }
+  class { 'rrdcached::service': }
 
   if $ensure == 'present' {
-    Class['rrdcached::package'] -> Class['rrdcached::config'] ~> Class['rrdcached::service']
+    Class['rrdcached::package'] -> Class['rrdcached::config']
+      ~> Class['rrdcached::service']
   } else {
     Class['rrdcached::service'] -> Class['rrdcached::package']
   }
