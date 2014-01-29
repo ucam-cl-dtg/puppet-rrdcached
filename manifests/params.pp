@@ -5,7 +5,7 @@ class rrdcached::params {
   $service_enable = true
 
   $listen  = 'unix:/var/run/rrdcached.sock'
-  $gid     = 'nagios'
+  $gid     = 'root'
   $journal_dir = '/var/lib/rrdcached/journal/'
   $mode    = '0660'
   $timeout = '1800'
