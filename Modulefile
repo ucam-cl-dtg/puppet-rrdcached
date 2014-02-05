@@ -1,4 +1,4 @@
-name 'rrdcached'
+name 'booo-rrdcached'
 version '0.0.1'
 source 'https://github.com/booo/puppet-rrdcached.git'
 author 'Patrick Ringl, Philipp Borgers'
