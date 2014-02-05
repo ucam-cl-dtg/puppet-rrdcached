@@ -15,6 +15,7 @@ class rrdcached::params {
   $always_flush = true
   $enable_corefiles = false
   $maxwait = '30'
+  $restrict_writes = false
 
   case $::operatingsystem {
     'Debian', 'Ubuntu': {
