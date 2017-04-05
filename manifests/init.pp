@@ -6,7 +6,7 @@ class rrdcached (
   $service_name     = $rrdcached::params::service_name,
   $service_ensure   = $rrdcached::params::service_ensure,
   $service_enable   = $rrdcached::params::service_enable,
-  $listen           = $rrdcached::params::listen,
+  $socket_file      = $rrdcached::params::socket_file,
   $gid              = $rrdcached::params::gid,
   $journal_dir      = $rrdcached::params::journal_dir,
   $mode             = $rrdcached::params::mode,
@@ -17,7 +17,9 @@ class rrdcached (
   $always_flush     = $rrdcached::params::always_flush,
   $enable_corefiles = $rrdcached::params::enable_corefiles,
   $maxwait          = $rrdcached::params::maxwait,
-  $restrict_writes  = $rrdcached::params::restrict_writes
+  $restrict_writes  = $rrdcached::params::restrict_writes,
+  $user             = $rrdcached::params::user,
+  $group            = $rrdcached::params::group
 ) inherits rrdcached::params {
 
   class { 'rrdcached::package': }

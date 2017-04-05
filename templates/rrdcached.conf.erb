@@ -11,13 +11,23 @@ DISABLE=<%= (!scope.lookupvar('rrdcached::service_ensure') || scope.lookupvar('r
 # options to be passed to rrdcached
 # (do not specify -p <pidfile> - this is handled by the init script)
 # default: see /etc/init.d/rrdcached
-OPTS="-t <%= scope.lookupvar('rrdcached::write_threads') %> -w <%= scope.lookupvar('rrdcached::timeout') %> -z <%= scope.lookupvar('rrdcached::delay') %> -j <%= scope.lookupvar('rrdcached::journal_dir') %> -s <%= scope.lookupvar('rrdcached::gid') %> -m <%= scope.lookupvar('rrdcached::mode') %> -l <%= scope.lookupvar('rrdcached::listen') %> <%= scope.lookupvar('rrdcached::always_flush') ? '-F' : '' %> <%= scope.lookupvar('rrdcached::restrict_writes') ? '-B' : '' %> -b <%= scope.lookupvar('rrdcached::jump_dir') %>"
+BASE_OPTIONS="<%= scope.lookupvar('rrdcached::always_flush') ? '-F' : '' %> <%= scope.lookupvar('rrdcached::restrict_writes') ? '-B' : '' %>"
+WRITE_TIMEOUT="<%= scope.lookupvar('rrdcached::timeout') %>"
+WRITE_JITTER="<%= scope.lookupvar('rrdcached::delay') %>"
+WRITE_THREAD="<%= scope.lookupvar('rrdcached::write_threads') %>"
+BASE_PATH="<%= scope.lookupvar('rrdcached::jump_dir') %>"
+JOURNAL_PATH="<%= scope.lookupvar('rrdcached::journal_dir') %>"
+DAEMON_GROUP="<%= @group ? scope.lookupvar('rrdcached::group') : '' %>"
+DAEMON_USER="<%= @user ? scope.lookupvar('rrdcached::user') : '' %>"
+SOCKFILE="<%= scope.lookupvar('rrdcached::socket_file') %>"
+SOCKGROUP="<%= scope.lookupvar('rrdcached::gid') %>"
+SOCKMODE="<%= scope.lookupvar('rrdcached::mode') %>"
 
 # number of seconds to wait for rrdcached to shut down
 # (writing the data to disk may take some time;
 # tune this according to your setup)
 # default: 30
-MAXWAIT=<%= scope.lookupvar('rrdcached::maxwait') %>
+STOP_WAIT_DELAY=<%= scope.lookupvar('rrdcached::maxwait') %>
 
 # 0: do not enable core-files, 1: enable core-files ... if rrdcached crashes
 # default: 0

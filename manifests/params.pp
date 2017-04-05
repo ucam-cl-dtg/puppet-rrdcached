@@ -4,7 +4,7 @@ class rrdcached::params {
   $service_ensure = 'running'
   $service_enable = true
 
-  $listen  = 'unix:/var/run/rrdcached.sock'
+  $socket_file  = '/var/run/rrdcached.sock'
   $gid     = 'root'
   $journal_dir = '/var/lib/rrdcached/journal/'
   $mode    = '0660'
@@ -16,6 +16,8 @@ class rrdcached::params {
   $enable_corefiles = false
   $maxwait = '30'
   $restrict_writes = false
+  $user = undef
+  $group = undef
 
   case $::operatingsystem {
     'Debian', 'Ubuntu': {
